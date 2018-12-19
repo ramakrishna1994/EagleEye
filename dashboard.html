@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/company.js"></script>
+    <script src="js/product.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand">EagleEye</a>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-10">
+                <div class="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-5 ">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4>Bought From :</h4>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button data-toggle="modal" data-target="#companySearchModal" type="submit" class="btn btn-danger">Search Company</button>
+                                    </div>
+                                    <div class="col-md-4">
+                                         <button data-toggle="modal" data-target="#companyModal" type="submit" class="btn btn-success">Add New Company</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="3" id="buyfrom" disabled></textarea>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        P.O. Number : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        P.O. Date : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Seller ID : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Insurance : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Transportation : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Delivery : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Payment : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Buyer ID : <input type="text" size="16">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-1  align-items-center">
+
+                            </div>
+                            <div class="col-md-5">
+
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h4>Sold To :</h4>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <button data-toggle="modal" data-target="#productModal" type="submit" class="btn btn-warning">Search Company</button>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea class="form-control" rows="3" id="soldto" disabled></textarea>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        P.O. Number : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        P.O. Date : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Seller ID : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Insurance : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Transportation : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Delivery : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Payment : <input type="text" size="16">
+                                    </div>
+                                    <div class="col-md-4">
+                                        Buyer ID : <input type="text" size="16">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                <tr>
+
+                                    <th scope="col">
+                                        <button data-toggle="modal" data-target="#productModal" type="submit" class="btn btn-success">Add New Product</button>
+                                    </th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">CAS No.</th>
+                                    <th scope="col">HSN Code</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <button data-toggle="modal" data-target="#productSearchModal" type="submit" class="btn btn-primary">Search Product</button>
+
+                                    </td>
+                                    <input type="text" id="pid" hidden>
+                                    <td>
+                                        <input type="text" size="50" id="pname" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" size="15" id="cas" disabled>
+                                    </td>
+                                    <td>
+                                        <input type="text" size="15" id="hsn" disabled>
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">*</th>
+                                        <th scope="col">Units</th>
+                                        <th scope="col">Pkts</th>
+                                        <th scope="col">Qty</th>
+                                        <th scope="col">Rate Per <br>Unit in Rs.</th>
+                                        <th scope="col">Total in<br> Rs.</th>
+                                        <th scope="col">Frieght<br>Charge in Rs.</th>
+                                        <th scope="col">Total Before <br>Tax in Rs.</th>
+                                        <th scope="col">IGST<br>(18%)</th>
+                                        <th scope="col">CGST<br>(9%)</th>
+                                        <th scope="col">SGST<br>(9%)</th>
+                                        <th scope="col">Grand Total<br> in Rs.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>BUY </b>
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="4">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="6">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="7">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="7">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="7">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="9">
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b>SELL </b>
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="4">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="6">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="7">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="7">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="7">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="3">
+                                        </td>
+                                        <td>
+                                            <input type="text" size="9">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+
+
+<!-- Companies Modal -->
+<div id="companyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Add New Company Details</h4>
+      </div>
+      <div class="modal-body">
+
+          <div class="form-horizontal" >
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="companyname">Company Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="companyname">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="consultantname">Consultant Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="consultantname">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="gstin">GST IN:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="gstin">
+                </div>
+                  <label class="control-label col-sm-2" for="pan">PAN No.:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="pan">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="iec">IEC No.:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="iec">
+                </div>
+                  <label class="control-label col-sm-2" for="tin">TIN No.:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="tin">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email Address:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="email">
+                </div>
+                  <label class="control-label col-sm-2" for="mobile">Mobile Number:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="mobile">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="delivery">Delivery Address:</label>
+                <div class="col-sm-4">
+                  <textarea class="form-control" rows="5" id="delivery"></textarea>
+                </div>
+                  <label class="control-label col-sm-2" for="taxinvoice">Tax Invoice Address:</label>
+                <div class="col-sm-4">
+                  <textarea class="form-control" rows="5" id="taxinvoice"></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-4">
+                  <button type="submit" onclick="addnewcompany()" class="btn btn-success btn-block">Submit</button>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- Products Modal -->
+<div id="productModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Add New Product Details</h4>
+      </div>
+      <div class="modal-body">
+
+          <div class="form-horizontal" >
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="productname">Product Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="productname">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="casno">CAS No.:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="casno">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="hsncode">HSN Code:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="hsncode">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-4">
+                  <button type="submit" onclick="addnewproduct()" class="btn btn-success btn-block">Submit</button>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Products Modal -->
+<div id="productSearchModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Search For Product Details</h4>
+      </div>
+      <div class="modal-body">
+          <div class="container-fluid">
+                <div class="row">
+                   <div class="input-group">
+                        <input type="text" onkeyup="getallproducts()" id="filter" class="form-control" placeholder="Search Product Using Name or CAS No. or HSN Code">
+                        <div class="input-group-btn">
+                          <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                        </div>
+                      </div>
+              </div>
+              <div class="row">
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                            <th>Product Name</th>
+                            <th>CAS No.</th>
+                            <th>HSN Code</th>
+                          </tr>
+                        </thead>
+                        <tbody id="productbody">
+                          <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john@example.com</td>
+                          </tr>
+                        </tbody>
+                  </table>
+              </div>
+          </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>
