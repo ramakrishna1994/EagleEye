@@ -15,7 +15,7 @@ mydb = connectiondetails.mydb
 mycursor = mydb.cursor()
 
 mycursor.execute("select * from companies where companyname like '%"+str(filter)+"%' or "
-                                            "consultantname like '%"+str(filter)+"%' ;")
+                                             "consultantname like '%"+str(filter)+"%' ;")
 
 companylist = mycursor.fetchall()
 

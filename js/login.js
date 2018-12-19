@@ -34,7 +34,7 @@ function login()
                     {
                         if(response.error == false)
                         {
-                            window.location.href = 'dashboard.html';
+                            window.location.href = 'order.html';
                         }
                         else
                         {

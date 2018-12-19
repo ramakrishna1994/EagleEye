@@ -1,5 +1,7 @@
 function addorder() {
 
+    document.getElementById('orderstatus').innerHTML = "<img src='../images/loader.gif' width='40' height='40'>";
+    $("html, body").animate({ scrollTop: 0 }, 500);
     var pocompanyid = document.getElementById('buycompanyid').value;
     var ponumber = document.getElementById('ponumber').value;
     var podate = document.getElementById('podate').value;
@@ -100,9 +102,71 @@ function addorder() {
             contentType: false,
             success: function (response)
             {
+                if(response == 200){
+                    document.getElementById('orderstatus').innerHTML = '<p class="text-success">Successfully Inserted Into Database</p>';
+                    clearorder();
+                }
+                else{
+                    document.getElementById('orderstatus').innerHTML = '<p class="text-danger">Problem With Inserting Order!! Please Try Again</p>';
+                }
 
             }
         });
     });
+
+}
+
+
+function clearorder() {
+
+    document.getElementById('buycompanyid').value = "";
+    document.getElementById('ponumber').value = "";
+    document.getElementById('podate').value = "";
+    document.getElementById('poinsurance').value = "";
+    document.getElementById('potransportation').value = "";
+    document.getElementById('podelivery').value = "";
+    document.getElementById('popayment').value = "";
+
+    document.getElementById('sellcompanyid').value = "";
+    document.getElementById('taxinvoicenumber').value = "";
+    document.getElementById('taxinvoicedate').value = "";
+    document.getElementById('taxinvoiceponumber').value = "";
+    document.getElementById('taxinvoicepodate').value = "";
+    document.getElementById('taxinvoicetransportation').value = "";
+    document.getElementById('taxinvoicedelivery').value = "";
+    document.getElementById('taxinvoicepayment').value = "";
+
+    document.getElementById('pid').value = "";
+
+    document.getElementById('bunits').value = "";
+    document.getElementById('bpkts').value = "";
+    document.getElementById('bqty').value = "";
+    document.getElementById('brate').value = "";
+    document.getElementById('btotal').value = "";
+    document.getElementById('bfreight').value = "";
+    document.getElementById('btotalbeforetax').value = "";
+    document.getElementById('bigst').value = "";
+    document.getElementById('bcgst').value = "";
+    document.getElementById('bsgst').value = "";
+    document.getElementById('bgrandtotal').value = "";
+
+    document.getElementById('sunits').value = "";
+    document.getElementById('spkts').value = "";
+    document.getElementById('sqty').value = "";
+    document.getElementById('srate').value = "";
+    document.getElementById('stotal').value = "";
+    document.getElementById('sfreight').value = "";
+    document.getElementById('stotalbeforetax').value = "";
+    document.getElementById('sigst').value = "";
+    document.getElementById('scgst').value = "";
+    document.getElementById('ssgst').value = "";
+    document.getElementById('sgrandtotal').value = "";
+
+    document.getElementById('pname').value = "";
+    document.getElementById('cas').value = "";
+    document.getElementById('hsn').value = "";
+
+    document.getElementById('sellcompany').value = "";
+    document.getElementById('buycompany').value = "";
 
 }

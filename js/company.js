@@ -5,7 +5,7 @@ function checkParams(companyname,consultantname,gstin,pan,iec,tin,email,mobile,d
 
 function addnewcompany()
     {
-
+        document.getElementById('companystatus').innerHTML = "<img src='../images/loader.gif' width='40' height='40'>";
         var companyname = document.getElementById('companyname').value;
         var consultantname = document.getElementById('consultantname').value;
         var gstin = document.getElementById('gstin').value;
@@ -44,12 +44,32 @@ function addnewcompany()
                     success: function (response)
                     {
 
-                        alert(1);
+                        if(response == 200){
+                            document.getElementById('companystatus').innerHTML = '<p class="text-success">Successfully Added</p>'
+                           clearcompany()
+                        }
+                        else{
+                            document.getElementById('companystatus').innerHTML = '<p class="text-danger">Problem With Inserting Data!! Please Try Again</p>'
+                        }
 
 
                     }
                 });
         });
+}
+
+
+function clearcompany() {
+    document.getElementById('companyname').value = "";
+    document.getElementById('consultantname').value = "";
+    document.getElementById('gstin').value = "";
+    document.getElementById('pan').value = "";
+    document.getElementById('iec').value = "";
+    document.getElementById('tin').value = "";
+    document.getElementById('email').value = "";
+    document.getElementById('mobile').value = "";
+    document.getElementById('delivery').value = "";
+    document.getElementById('taxinvoice').value = "";
 }
 var trans = 0
 function searchcompanies(transaction) {
@@ -61,7 +81,7 @@ function searchcompanies(transaction) {
 
 function getallcompanies()
     {
-
+        document.getElementById('companybody').innerHTML = "<tr><td class='text-center' colspan='2'><img src='../images/loader.gif' width='40' height='40'></tr></td>";
         var filter = document.getElementById('companyfilter').value;
 
         var formData = new FormData();
@@ -100,7 +120,13 @@ function getallcompanies()
 
 
                         }
-                        document.getElementById('companybody').innerHTML = innerhtml;
+                        if(response.length == 0){
+                            document.getElementById('companybody').innerHTML = '<tr><td colspan="2" class="text-center text-danger">No Companies Found</td></tr>';
+                        }
+                        else{
+                            document.getElementById('companybody').innerHTML = innerhtml;
+                        }
+
 
 
                     }

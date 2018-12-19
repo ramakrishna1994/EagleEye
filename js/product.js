@@ -6,6 +6,7 @@ function checkParams(companyname,consultantname,gstin,pan,iec,tin,email,mobile,d
 function addnewproduct()
     {
 
+        document.getElementById('productstatus').innerHTML = "<img src='../images/loader.gif' width='40' height='40'>";
         var productname = document.getElementById('productname').value;
         var casno = document.getElementById('casno').value;
         var hsncode = document.getElementById('hsncode').value;
@@ -30,7 +31,13 @@ function addnewproduct()
                     success: function (response)
                     {
 
-                        alert(1);
+                        if(response == 200){
+                           document.getElementById('productstatus').innerHTML = '<p class="text-success">Successfully Added</p>'
+                           clearproduct()
+                        }
+                        else{
+                            document.getElementById('productstatus').innerHTML = '<p class="text-danger">Problem With Inserting Data!! Please Try Again</p>'
+                        }
 
 
                     }
@@ -41,6 +48,11 @@ function addnewproduct()
 
 }
 
+function clearproduct() {
+        document.getElementById('productname').value = "";
+        document.getElementById('casno').value = "";
+        document.getElementById('hsncode').value = "";
+}
 
 
 function getallproducts()
@@ -48,7 +60,7 @@ function getallproducts()
 
         var filter = document.getElementById('filter').value;
 
-
+        document.getElementById('productbody').innerHTML = "<tr class='text-center'><td colspan='3'><img src='../images/loader.gif' width='40' height='40'></tr></td>";
 
 
 
@@ -81,7 +93,14 @@ function getallproducts()
                                          '</tr>'
 
                         }
-                        document.getElementById('productbody').innerHTML = innerhtml;
+                        if(response.length == 0){
+                            document.getElementById('productbody').innerHTML = '<tr><td colspan="3" class="text-center text-danger">No Products Found</td></tr>';
+                        }
+                        else{
+                            document.getElementById('productbody').innerHTML = innerhtml;
+                        }
+
+
 
 
                     }
