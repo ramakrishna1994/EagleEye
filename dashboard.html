@@ -9,6 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/company.js"></script>
     <script src="js/product.js"></script>
+    <script src="js/order.js"></script>
 </head>
 <body>
 
@@ -31,49 +32,48 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-5 ">
+                                <div class="row text-center">
+                                    <h4>PURCHASE ORDER</h4>
+                                </div>
+                                <br>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <h4>Bought From :</h4>
                                     </div>
                                     <div class="col-md-4">
-                                        <button data-toggle="modal" data-target="#companySearchModal" type="submit" class="btn btn-danger">Search Company</button>
+                                        <button onclick="searchcompanies(1)" type="submit" class="btn btn-danger">Search Company</button>
                                     </div>
                                     <div class="col-md-4">
                                          <button data-toggle="modal" data-target="#companyModal" type="submit" class="btn btn-success">Add New Company</button>
                                     </div>
                                 </div>
+                                <input hidden id="buycompanyid">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea class="form-control" rows="3" id="buyfrom" disabled></textarea>
+                                        <textarea class="form-control" rows="3" id="buycompany" disabled></textarea>
                                     </div>
 
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        P.O. Number : <input type="text" size="16">
+                                        P.O. Number : <input type="text" size="16" id="ponumber">
                                     </div>
                                     <div class="col-md-4">
-                                        P.O. Date : <input type="text" size="16">
+                                        P.O. Date : <input type="text" size="16" id="podate">
                                     </div>
                                     <div class="col-md-4">
-                                        Seller ID : <input type="text" size="16">
+                                        Insurance : <input type="text" size="16" id="poinsurance">
                                     </div>
                                     <div class="col-md-4">
-                                        Insurance : <input type="text" size="16">
+                                        Transportation : <input type="text" size="16" id="potransportation">
                                     </div>
                                     <div class="col-md-4">
-                                        Transportation : <input type="text" size="16">
+                                        Delivery : <input type="text" size="16" id="podelivery">
                                     </div>
                                     <div class="col-md-4">
-                                        Delivery : <input type="text" size="16">
-                                    </div>
-                                    <div class="col-md-4">
-                                        Payment : <input type="text" size="16">
-                                    </div>
-                                    <div class="col-md-4">
-                                        Buyer ID : <input type="text" size="16">
+                                        Payment : <input type="text" size="16" id="popayment">
                                     </div>
                                 </div>
 
@@ -83,48 +83,52 @@
 
                             </div>
                             <div class="col-md-5">
-
+                                <div class="row text-center">
+                                    <h4>TAX INVOICE</h4>
+                                </div>
+                                <br>
 
                                 <div class="row">
                                     <div class="col-md-3">
                                         <h4>Sold To :</h4>
                                     </div>
-                                    <div class="col-md-9">
-                                        <button data-toggle="modal" data-target="#productModal" type="submit" class="btn btn-warning">Search Company</button>
+                                    <div class="col-md-4">
+                                        <button onclick="searchcompanies(2)" type="submit" class="btn btn-danger">Search Company</button>
+                                    </div>
+                                    <div class="col-md-4">
+                                         <button data-toggle="modal" data-target="#companyModal" type="submit" class="btn btn-success">Add New Company</button>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea class="form-control" rows="3" id="soldto" disabled></textarea>
+                                        <textarea class="form-control" rows="3" id="sellcompany" disabled></textarea>
                                     </div>
 
                                 </div>
+                                <input hidden id="sellcompanyid">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        P.O. Number : <input type="text" size="16">
+                                        Tax Invoice No. : <input type="text" size="16" id="taxinvoicenumber">
                                     </div>
                                     <div class="col-md-4">
-                                        P.O. Date : <input type="text" size="16">
+                                        Tax Invoice Date : <input type="text" size="16" id="taxinvoicedate">
                                     </div>
                                     <div class="col-md-4">
-                                        Seller ID : <input type="text" size="16">
+                                       Buyer P.O No. : <input type="text" size="16" id="taxinvoiceponumber">
                                     </div>
                                     <div class="col-md-4">
-                                        Insurance : <input type="text" size="16">
+                                        Buyer P.O Date : <input type="text" size="16" id="taxinvoicepodate">
                                     </div>
                                     <div class="col-md-4">
-                                        Transportation : <input type="text" size="16">
+                                        Transportation : <input type="text" size="16" id="taxinvoicetransportation">
                                     </div>
                                     <div class="col-md-4">
-                                        Delivery : <input type="text" size="16">
+                                        Delivery : <input type="text" size="16" id="taxinvoicedelivery">
                                     </div>
                                     <div class="col-md-4">
-                                        Payment : <input type="text" size="16">
-                                    </div>
-                                    <div class="col-md-4">
-                                        Buyer ID : <input type="text" size="16">
+                                        Payment : <input type="text" size="16" id="taxinvoicepayment">
                                     </div>
                                 </div>
                             </div>
@@ -174,7 +178,7 @@
                                         <th scope="col">Qty</th>
                                         <th scope="col">Rate Per <br>Unit in Rs.</th>
                                         <th scope="col">Total in<br> Rs.</th>
-                                        <th scope="col">Frieght<br>Charge in Rs.</th>
+                                        <th scope="col">Freight<br>Charge in Rs.</th>
                                         <th scope="col">Total Before <br>Tax in Rs.</th>
                                         <th scope="col">IGST<br>(18%)</th>
                                         <th scope="col">CGST<br>(9%)</th>
@@ -188,37 +192,37 @@
                                             <b>BUY </b>
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="bunits">
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="bpkts">
                                         </td>
                                         <td>
-                                            <input type="text" size="4">
+                                            <input type="text" size="4" id="bqty">
                                         </td>
                                         <td>
-                                            <input type="text" size="6">
+                                            <input type="text" size="6" id="brate">
                                         </td>
                                         <td>
-                                            <input type="text" size="7">
+                                            <input type="text" size="7" id="btotal">
                                         </td>
                                         <td>
-                                            <input type="text" size="7">
+                                            <input type="text" size="7" id="bfreight">
                                         </td>
                                         <td>
-                                            <input type="text" size="7">
+                                            <input type="text" size="7" id="btotalbeforetax">
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="bigst">
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="bcgst">
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="bsgst">
                                         </td>
                                         <td>
-                                            <input type="text" size="9">
+                                            <input type="text" size="9" id="bgrandtotal">
                                         </td>
                                     </tr>
 
@@ -227,37 +231,37 @@
                                             <b>SELL </b>
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="sunits">
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="spkts">
                                         </td>
                                         <td>
-                                            <input type="text" size="4">
+                                            <input type="text" size="4" id="sqty">
                                         </td>
                                         <td>
-                                            <input type="text" size="6">
+                                            <input type="text" size="6" id="srate">
                                         </td>
                                         <td>
-                                            <input type="text" size="7">
+                                            <input type="text" size="7" id="stotal">
                                         </td>
                                         <td>
-                                            <input type="text" size="7">
+                                            <input type="text" size="7" id="sfreight">
                                         </td>
                                         <td>
-                                            <input type="text" size="7">
+                                            <input type="text" size="7" id="stotalbeforetax">
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="sigst">
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="scgst">
                                         </td>
                                         <td>
-                                            <input type="text" size="3">
+                                            <input type="text" size="3" id="ssgst">
                                         </td>
                                         <td>
-                                            <input type="text" size="9">
+                                            <input type="text" size="9" id="sgrandtotal">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -267,6 +271,12 @@
                 </div>
             </div>
         </div>
+    <div class="row">
+        <div class="col-sm-offset-4 col-sm-2">
+            <button type="submit" onclick="addorder()" class="btn btn-info btn-block">Add Order</button>
+        </div>
+    </div>
+    <br>
 </div>
 
 
@@ -416,7 +426,7 @@
 
 
 
-<!-- Products Modal -->
+<!-- Products Search Modal -->
 <div id="productSearchModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
 
@@ -452,6 +462,56 @@
                             <td>John</td>
                             <td>Doe</td>
                             <td>john@example.com</td>
+                          </tr>
+                        </tbody>
+                  </table>
+              </div>
+          </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- Comapnies Search Modal -->
+<div id="companySearchModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title text-center">Search For Company Details</h4>
+      </div>
+      <div class="modal-body">
+          <div class="container-fluid">
+                <div class="row">
+                   <div class="input-group">
+                        <input type="text" onkeyup="getallcompanies()" id="companyfilter" class="form-control" placeholder="Search Companies Using Name">
+                        <div class="input-group-btn">
+                          <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                        </div>
+                      </div>
+              </div>
+              <div class="row">
+                  <table class="table table-bordered">
+                      <thead>
+                          <tr>
+                            <th>Company Name</th>
+                            <th>Consultant Name</th>
+                          </tr>
+                        </thead>
+                        <tbody id="companybody">
+                          <tr>
+                            <td>John</td>
+                            <td>Doe</td>
                           </tr>
                         </tbody>
                   </table>

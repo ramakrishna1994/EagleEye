@@ -50,7 +50,81 @@ function addnewcompany()
                     }
                 });
         });
+}
+var trans = 0
+function searchcompanies(transaction) {
+
+    $("#companySearchModal").modal('show')
+    document.getElementById('companybody').innerHTML = ""
+    trans = transaction
+}
+
+function getallcompanies()
+    {
+
+        var filter = document.getElementById('companyfilter').value;
+
+        var formData = new FormData();
+        formData.append( 'filter',filter);
+
+
+        $(document).ready(function(){
+
+                $.ajax({
+                    url: "cgi-bin/getallcompanies.py",// give your url
+                    type: "POST",
+                    dataType: 'json',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response)
+                    {
+                        var innerhtml = ""
+                        for(var i=0;i< response.length;i++){
+                            var companyid = response[i].companyid
+                            var companyname = response[i].companyname
+                            var consultantname = response[i].consultantname
+
+                            if(trans == 1){
+                                    innerhtml += '<tr style="cursor: pointer" onclick="updatebuycompany('+companyid+',\''+companyname+'\',\''+consultantname+'\')">' +
+                                            '<td>' + companyname + '</td>' +
+                                            '<td>' + consultantname + '</td>' +
+                                         '</tr>'
+                            }
+                            else{
+                                innerhtml += '<tr style="cursor: pointer" onclick="updatesellcompany('+companyid+',\''+companyname+'\',\''+consultantname+'\')">' +
+                                            '<td>' + companyname + '</td>' +
+                                            '<td>' + consultantname + '</td>' +
+                                         '</tr>'
+                            }
+
+
+                        }
+                        document.getElementById('companybody').innerHTML = innerhtml;
+
+
+                    }
+                });
+        });
 
 
 
-    }
+}
+
+
+function updatebuycompany(companyid,companyname,consultantname)
+{
+    $("#companySearchModal").modal('hide')
+    var text = companyname +'\n'+ consultantname
+    document.getElementById('buycompanyid').value = companyid
+    document.getElementById('buycompany').value = text
+}
+
+function updatesellcompany(companyid,companyname,consultantname)
+{
+    $("#companySearchModal").modal('hide')
+    var text = companyname +'\n'+ consultantname
+    document.getElementById('sellcompanyid').value = companyid
+    document.getElementById('sellcompany').value = text
+}
+
