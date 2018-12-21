@@ -31,12 +31,12 @@ function addnewproduct()
                     success: function (response)
                     {
 
-                        if(response == 200){
+                        if(response.error == 0){
                            document.getElementById('productstatus').innerHTML = '<p class="text-success">Successfully Added</p>'
                            clearproduct()
                         }
                         else{
-                            document.getElementById('productstatus').innerHTML = '<p class="text-danger">Problem With Inserting Data!! Please Try Again</p>'
+                            document.getElementById('productstatus').innerHTML = '<p class="text-danger">'+response.message+'</p>'
                         }
 
 

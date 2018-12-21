@@ -17,10 +17,20 @@ mydb = connectiondetails.mydb
 
 mycursor = mydb.cursor()
 
+mycursor.execute("select count(*) from products where casno='"+str(casno)+"'")
 
-mycursor.execute("insert into products(productname,casno,hsncode) "
-                 "values('"+str(productname)+"','"+str(casno)+"','"+str(hsncode)+"')")
+cascounts = mycursor.fetchall()
 
-mydb.commit()
+mm = {}
 
-print json.dumps(200)
+for count in cascounts:
+    if count[0] >= 1:
+        mm['error'] = 1
+        mm['message'] = 'Product with CAS No. Already Exists'
+    else:
+        mm['error'] = 0
+        mycursor.execute("insert into products(productname,casno,hsncode) "
+                         " values('"+str(productname)+"','"+str(casno)+"','"+str(hsncode)+"')")
+        mydb.commit()
+
+print json.dumps(mm)
