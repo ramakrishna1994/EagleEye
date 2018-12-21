@@ -37,7 +37,11 @@ purchases = mycursor.fetchall()
 mm = {}
 
 for purchase in purchases:
-    mm["purchases"] = purchase[0]
+    if purchase[0] == None:
+        mm["purchases"] = 0
+    else:
+        mm["purchases"] = purchase[0]
+
 
 print json.dumps(mm)
 

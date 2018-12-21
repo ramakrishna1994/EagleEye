@@ -14,30 +14,34 @@ todate = form["todate"].value
 #fromdate = '2017-07-01'
 #todate = '2018-03-31'
 
-
+mm = {}
 mydb = connectiondetails.mydb
 
 mycursor = mydb.cursor()
 
-mycursor.execute(" SELECT " 
-                    " SUM(sgrandtotal) "
-                " FROM "
-                    " selldetails "
-                " WHERE "
-                    " orderid IN (SELECT "
-                                    " orderid "
-                                " FROM "
-                                    " taxinvoices "
-                                " WHERE "
-                                " taxinvoicedate BETWEEN '"+fromdate+"' AND '"+todate+"');")
+sql = " SELECT " \
+      " SUM(sgrandtotal) "\
+        " FROM "\
+            " selldetails "\
+        " WHERE "\
+            " orderid IN (SELECT "\
+                            " orderid "\
+                        " FROM "\
+                            " taxinvoices "\
+                        " WHERE "\
+                        " taxinvoicedate BETWEEN '"+fromdate+"' AND '"+todate+"');"
 
 
+
+mycursor.execute(sql)
 sales = mycursor.fetchall()
-
-mm = {}
-
 for sale in sales:
-    mm["sales"] = sale[0]
+    if sale[0]==None:
+        mm["sales"] = 0
+    else:
+        mm["sales"] = sale[0]
+
+
 
 print json.dumps(mm)
 

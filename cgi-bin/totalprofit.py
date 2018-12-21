@@ -12,7 +12,7 @@ fromdate = form["fromdate"].value
 todate = form["todate"].value
 
 #fromdate = '2017-07-01'
-#todate = '2018-03-31'
+#todate = '2017-03-31'
 
 buy = 0
 sold = 0
@@ -62,6 +62,11 @@ mm = {}
 
 for sale in sales:
   sold = sale[0]
+
+if sold == None:
+    sold = 0
+if buy == None:
+    buy = 0
 
 mm['profit'] = (sold - buy)
 
