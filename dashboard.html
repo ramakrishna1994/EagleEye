@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">EagleEye</a>
+        </div>
+
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row ">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-10">
+
+                    <div class="row">
+                        <div class="panel panel-primary text-center">
+                            <div class="panel-heading">
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label for="fromdatesp">Enter From Date:</label>
+                                        <input type="text" class="form-control" id="fromdatesp">
+                                    </div>
+                                    <div class="form-group">
+                                        &nbsp;
+                                        &nbsp;
+                                        &nbsp;
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="todatesp">Enter To Date:</label>
+                                        <input type="text" class="form-control" id="todatesp">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-warning" onclick="getsalesandpurchasesdetails()">Submit</button>
+                                </div>
+
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-sm-4">
+                                    <div class="panel panel-success text-center">
+                                        <div class="panel-body">
+                                            <p><b>TOTAL PURCHASES</b></p>
+                                                <h1 class="text-danger" id="purchases">
+
+                                                </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="panel panel-success text-center">
+                                        <div class="panel-body">
+                                             <p><b>TOTAL SALES</b></p>
+                                                <h1 class="text-success" id="sales">
+
+                                                </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="panel panel-success text-center">
+                                        <div class="panel-body">
+                                             <p><b>TOTAL PROFIT</b></p>
+                                                <h1 class="text-info" id="profit">
+
+                                                </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="panel panel-info">
+                            <div class="panel-body" id="linechart">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+        </div>
+    </div>
+<script type="text/javascript">
+
+Highcharts.chart('linechart', {
+
+    title: {
+        text: 'Year Wise Purchases, Sales and Profit'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Amount in Rupees'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2010
+        }
+    },
+
+    series: [{
+        name: 'Purchases',
+        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }, {
+        name: 'Sales',
+        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+    }, {
+        name: 'Profit',
+        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+</script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
